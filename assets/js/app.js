@@ -3,10 +3,6 @@ var gifBArray= ["Michael Scott","Dwight Schrute","Jim Halpert","Pam Beesly","Rya
 var giphyKey = "dc6zaTOxFJmzC";
 var gInput = "";
 
-
-
-    
-
 function renderButtons(){
 	for (var i = 0; i < gifBArray.length; i++) {
 		gifButtons += "<button class='btn gButtonStyle gif-buttons' id='arrayButton' data-name='" + gifBArray[i] +"'>" + gifBArray[i] + "</button>";
@@ -14,9 +10,6 @@ function renderButtons(){
 		console.log(gifButtons)
 	}
 }
-
-
-
 
 $(document).ready(function(){
 	renderButtons();
