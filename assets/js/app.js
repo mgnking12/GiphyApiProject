@@ -35,20 +35,32 @@ $('body').on('click', '.gif-buttons', function(event){
 	 .done(function(response) {
 	 	console.log(response);
 	 	var results = response.data;
-	 	for (var i = 0; i < response.length; i++){
-	 	var rating = $('<p>').text("Rating: " + response[i].rating);
-	 }
+	 	 for (var i = 0; i < results.length; i++){
 
-	 	for(var i=0; i < results.length; i++){
-	 		console.log(rating);
-	 	var gifImage = $('<img src=' + results[i].images.fixed_height_still.url + ' data-still=' +
+
+            if (results[i].rating == "r" || results[i].rating == "pg-13")
+            {
+
+            }
+            else {
+              var gifDiv = $('<div class="item col-md-4 img-responsive">')
+
+             var rating = results[i].rating;
+             console.log(results.rating);
+             var p = $('<p>').text( "Rating: " + rating);
+
+             var gifImage = $('<img src=' + results[i].images.fixed_height_still.url + ' data-still=' +
                 	results[i].images.fixed_height_still.url + ' data-animate=' +
-                	results[i].images.fixed_height.url + ' data-state="still" class="gifImage">' + rating);
-	 	$('#gifsAppear').prepend(gifImage);   
+                	results[i].images.fixed_height.url + ' data-state="still" class="gifImage">');
+             };
 
-	 }
-	});
-	 ;
+             gifDiv.append(p)
+            gifDiv.append(gifImage)
+
+             $('#gifsAppear').append(gifDiv);               
+            //}
+	};
+	 });
 });
 $('body').on('click', '.gifImage', function(event){
 
@@ -62,9 +74,10 @@ $('body').on('click', '.gifImage', function(event){
             $(this).attr('src', $(this).data('still'));
             $(this).attr('data-state', 'still');
         }
+    });
 });
-	
-});
+
+
 
 
 
